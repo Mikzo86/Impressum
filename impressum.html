@@ -4,57 +4,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
-    <title>Impressum - Mikzo</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <title>Impressum — MIKZO</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        .impressum-box {
-            max-width: 750px;
-            margin: 40px auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            text-align: left;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        :root {
+            --bg-dark: #020408;
+            --card-bg: rgba(10, 14, 23, 0.75);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-active: rgba(56, 189, 248, 0.5);
+            --text-main: #f8fafc;
+            --text-muted: #64748b;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.2);
         }
-        .impressum-box h1 {
-            font-size: 2rem;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(14, 165, 233, 0.05) 0%, transparent 40%);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 20px;
+        }
+
+        .privacy-wrapper {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        .privacy-header {
             margin-bottom: 25px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-glass);
             padding-bottom: 15px;
         }
-        .impressum-section {
-            margin-bottom: 25px;
+
+        .privacy-header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(120deg, #ffffff 30%, var(--accent) 50%, #ffffff 70%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
         }
-        .impressum-section h2 {
-            font-size: 1.1rem;
-            color: #b0b0b0;
+
+        .privacy-header p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .ds-section {
+            margin-bottom: 22px;
+        }
+
+        .ds-section h2 {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
             margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
-        .impressum-section p {
+
+        .ds-section p {
             line-height: 1.6;
-            color: #e0e0e0;
-            font-size: 1rem;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            word-break: break-word;
         }
-        .impressum-section a {
-            color: #38bdf8;
+
+        .ds-section a {
+            color: var(--accent);
             text-decoration: none;
+            word-break: break-all;
         }
-        .impressum-section a:hover {
+
+        .ds-section a:hover {
             text-decoration: underline;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            color: var(--accent);
+            border-radius: 12px;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        @media (min-width: 768px) {
+            body { padding: 60px 40px; }
+            .privacy-wrapper { padding: 40px; }
+            .privacy-header h1 { font-size: 2.2rem; }
+            .ds-section p { font-size: 0.95rem; }
         }
     </style>
 </head>
 <body>
-    <div class="impressum-box">
-        <h1>Impressum</h1>
+
+    <div class="privacy-wrapper">
+        <div class="privacy-header">
+            <h1>Impressum</h1>
+            <p>// Anbieterkennzeichnung</p>
+        </div>
         
-        <div class="impressum-section">
-            <h2>Angaben gemäß § 5 DDG</h2>
+        <div class="ds-section">
+            <h2>Angaben gemäß § 5 TMG</h2>
             <p>
-                <strong>Mike Wehmer</strong><br>
+                Mike Wehmer<br>
                 c/o Impressumservice Dein-Impressum<br>
                 Stettiner Str. 41<br>
                 35410 Hungen<br>
@@ -62,31 +154,26 @@
             </p>
         </div>
 
-        <div class="impressum-section">
+        <div class="ds-section">
             <h2>Kontakt</h2>
             <p>
-                E-Mail: <a href="mailto:mikzo@gmx.de">mikzo@gmx.de</a><br>
-                Telefon: 0157 9234 1658
+                E-Mail: <a href="mailto:mikzo@gmx.de">mikzo@gmx.de</a>
             </p>
         </div>
 
-        <div class="impressum-section">
-            <h2>Redaktionell verantwortlich</h2>
+        <div class="ds-section">
+            <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
             <p>
-                Mike Wehmer (Anschrift wie oben)
+                Mike Wehmer<br>
+                Stettiner Str. 41<br>
+                35410 Hungen
             </p>
         </div>
 
-        <div class="impressum-section">
-            <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
-            <p>
-                Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-            </p>
-        </div>
-
-        <div style="margin-top: 35px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;">
-            <a href="index.html" class="button">← Zurück zur Startseite</a>
+        <div>
+            <a href="index.html" class="back-btn">← Zurück zur Startseite</a>
         </div>
     </div>
+
 </body>
 </html>
