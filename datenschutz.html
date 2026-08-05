@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html_content = """<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -34,7 +34,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Zwingt alles auf dem Handy perfekt in die Mitte! */
+            align-items: center;
             justify-content: space-between;
             padding: 20px 15px;
         }
@@ -90,20 +90,12 @@
             letter-spacing: 1px;
         }
 
-        .ds-section p, .ds-section ul {
+        .ds-section p {
             line-height: 1.6;
             color: #cbd5e1;
             font-size: 0.9rem;
             word-break: break-word;
-        }
-
-        .ds-section ul {
-            margin-left: 18px;
-            margin-top: 6px;
-        }
-
-        .ds-section li {
-            margin-bottom: 4px;
+            margin-bottom: 10px;
         }
 
         .ds-section a {
@@ -141,7 +133,7 @@
             body { padding: 60px 40px; }
             .privacy-wrapper { padding: 40px; margin: auto 0; }
             .privacy-header h1 { font-size: 2.2rem; }
-            .ds-section p, .ds-section ul { font-size: 0.95rem; }
+            .ds-section p { font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -150,92 +142,47 @@
     <div class="privacy-wrapper">
         <div class="privacy-header">
             <h1>Datenschutzerklärung</h1>
-            <p>// Rechtliche Hinweise</p>
+            <p>// DSGVO konform</p>
         </div>
         
         <div class="ds-section">
-            <p>Der Schutz Ihrer personenbezogenen Daten ist mir ein wichtiges Anliegen. Nachfolgend informiere ich Sie über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten beim Besuch dieser Website gemäß der Datenschutz-Grundverordnung (DSGVO).</p>
+            <h2>1. Datenschutz auf einen Blick</h2>
+            <p><strong>Allgemeine Hinweise</strong><br>
+            Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
         </div>
 
         <div class="ds-section">
-            <h2>1. Verantwortlicher</h2>
-            <p>
-                Mike Wehmer<br>
-                c/o Impressumservice Dein-Impressum<br>
-                Stettiner Str. 41<br>
-                35410 Hungen<br>
-                Deutschland<br>
-                E-Mail: <a href="mailto:mikzo@gmx.de">mikzo@gmx.de</a>
-            </p>
+            <h2>2. Hosting</h2>
+            <p>Diese Website wird extern gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich v.a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Websitezugriffe und sonstige Daten, die über eine Website generiert werden, handeln.</p>
         </div>
 
         <div class="ds-section">
-            <h2>2. Hosting und Zugriff auf die Website</h2>
-            <p>Diese Website wird als statische HTML-Website betrieben. Die Domain wird über Hetzner verwaltet. Soweit die Website über GitHub Pages bereitgestellt wird, erfolgt die technische Auslieferung über die Infrastruktur von GitHub.<br><br>
-            Beim Aufruf der Website werden durch den Hosting-Anbieter technisch erforderliche Informationen verarbeitet. Hierzu können insbesondere folgende Daten gehören:</p>
-            <ul>
-                <li>IP-Adresse</li>
-                <li>Datum und Uhrzeit des Zugriffs</li>
-                <li>Browsertyp und Browserversion</li>
-                <li>Betriebssystem</li>
-                <li>Referrer-URL (sofern übermittelt)</li>
-                <li>aufgerufene Seiten und Dateien</li>
-                <li>übertragene Datenmenge</li>
-            </ul>
-            <p style="margin-top: 10px;">Die Verarbeitung erfolgt ausschließlich zur Bereitstellung der Website, zur Gewährleistung der Sicherheit sowie zur Fehleranalyse.<br>
-            Rechtsgrundlage hierfür ist Art. 6 Abs. 1 lit. f DSGVO. Das berechtigte Interesse besteht in der sicheren und technisch fehlerfreien Bereitstellung dieser Website.</p>
+            <h2>3. Allgemeine Hinweise und Pflichtinformationen</h2>
+            <p><strong>Datenschutz</strong><br>
+            Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+            <p><strong>Hinweis zur verantwortlichen Stelle</strong><br>
+            Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:<br>
+            Mike Wehmer<br>
+            Stettiner Str. 41<br>
+            35410 Hungen<br>
+            Deutschland<br>
+            E-Mail: <a href="mailto:mikzo@gmx.de">mikzo@gmx.de</a></p>
         </div>
 
         <div class="ds-section">
-            <h2>3. Cookies</h2>
-            <p>Diese Website verwendet keine eigenen Cookies zu Analyse-, Werbe- oder Marketingzwecken.</p>
-        </div>
-
-        <div class="ds-section">
-            <h2>4. Kontaktaufnahme</h2>
-            <p>Wenn Sie mich per E-Mail kontaktieren, werden die von Ihnen übermittelten personenbezogenen Daten ausschließlich zur Bearbeitung Ihrer Anfrage verarbeitet.<br>
-            Rechtsgrundlage hierfür ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche oder vertragliche Kommunikation) beziehungsweise Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Bearbeitung Ihrer Anfrage).</p>
-        </div>
-
-        <div class="ds-section">
-            <h2>5. Weitergabe & Social Media Links</h2>
-            <p>Eine Weitergabe Ihrer personenbezogenen Daten an Dritte erfolgt grundsätzlich nicht, es sei denn, dies ist gesetzlich vorgeschrieben oder zur Bearbeitung Ihrer Anfrage erforderlich.<br><br>
-            Auf dieser Website sind Links zu externen Social-Media-Plattformen (z. B. YouTube, Twitch, Instagram, TikTok, Snapchat) eingebunden. Es handelt sich hierbei lediglich um reine Hyperlinks. Beim Aufruf unserer Website findet keine automatische Datenübertragung an die Betreiber dieser Social-Media-Dienste statt. Erst wenn Sie auf einen entsprechenden Link klicken, verlassen Sie unsere Website und rufen die jeweilige externe Plattform auf.</p>
-        </div>
-
-        <div class="ds-section">
-            <h2>6. Speicherdauer</h2>
-            <p>Personenbezogene Daten werden nur so lange gespeichert, wie dies für die jeweiligen Verarbeitungszwecke erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.</p>
-        </div>
-
-        <div class="ds-section">
-            <h2>7. Rechte betroffener Personen</h2>
-            <p>Sie haben insbesondere folgende Rechte:</p>
-            <ul>
-                <li>Auskunft gemäß Art. 15 DSGVO</li>
-                <li>Berichtigung gemäß Art. 16 DSGVO</li>
-                <li>Löschung gemäß Art. 17 DSGVO</li>
-                <li>Einschränkung der Verarbeitung gemäß Art. 18 DSGVO</li>
-                <li>Datenübertragbarkeit gemäß Art. 20 DSGVO</li>
-                <li>Widerspruch gegen die Verarbeitung gemäß Art. 21 DSGVO</li>
-                <li>Beschwerde bei einer Datenschutzaufsichtsbehörde gemäß Art. 77 DSGVO</li>
-            </ul>
-        </div>
-
-        <div class="ds-section">
-            <h2>8. SSL-/TLS-Verschlüsselung</h2>
-            <p>Diese Website nutzt eine verschlüsselte HTTPS-Verbindung, soweit Ihr Browser dies unterstützt.</p>
-        </div>
-
-        <div class="ds-section">
-            <h2>9. Aktualität dieser Datenschutzerklärung</h2>
-            <p>Stand: August 2026.</p>
+            <h2>4. Datenerfassung auf dieser Website</h2>
+            <p><strong>Server-Log-Dateien</strong><br>
+            Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind: Browsertyp und Browserversion, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage, IP-Adresse.</p>
         </div>
 
         <div>
-            <a href="index.html" class="back-btn">← Zurück zur Startseite</a>
+            <a href="/" class="back-btn">← Zurück zur Startseite</a>
         </div>
     </div>
 
 </body>
 </html>
+"""
+
+with open("datenschutz.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
