@@ -4,56 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
-    <title>Datenschutz - Mikzo</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <title>Datenschutz — MIKZO</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        .datenschutz-box {
-            max-width: 750px;
-            margin: 40px auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            text-align: left;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        :root {
+            --bg-dark: #020408;
+            --card-bg: rgba(10, 14, 23, 0.75);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-active: rgba(56, 189, 248, 0.5);
+            --text-main: #f8fafc;
+            --text-muted: #64748b;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.2);
         }
-        .datenschutz-box h1 {
-            font-size: 2rem;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(14, 165, 233, 0.05) 0%, transparent 40%);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 20px;
+        }
+
+        .privacy-wrapper {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        .privacy-header {
             margin-bottom: 25px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-glass);
             padding-bottom: 15px;
         }
-        .ds-section {
-            margin-bottom: 25px;
+
+        .privacy-header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(120deg, #ffffff 30%, var(--accent) 50%, #ffffff 70%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
         }
+
+        .privacy-header p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .ds-section {
+            margin-bottom: 22px;
+        }
+
         .ds-section h2 {
-            font-size: 1.1rem;
-            color: #b0b0b0;
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
             margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
+
         .ds-section p, .ds-section ul {
             line-height: 1.6;
-            color: #e0e0e0;
-            font-size: 1rem;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            word-break: break-word;
         }
+
         .ds-section ul {
-            margin-left: 20px;
-            margin-top: 5px;
+            margin-left: 18px;
+            margin-top: 6px;
         }
+
+        .ds-section li {
+            margin-bottom: 4px;
+        }
+
         .ds-section a {
-            color: #38bdf8;
+            color: var(--accent);
             text-decoration: none;
+            word-break: break-all;
         }
+
         .ds-section a:hover {
             text-decoration: underline;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            color: var(--accent);
+            border-radius: 12px;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        @media (min-width: 768px) {
+            body { padding: 60px 40px; }
+            .privacy-wrapper { padding: 40px; }
+            .privacy-header h1 { font-size: 2.2rem; }
+            .ds-section p, .ds-section ul { font-size: 0.95rem; }
         }
     </style>
 </head>
 <body>
-    <div class="datenschutz-box">
-        <h1>Datenschutzerklärung</h1>
+
+    <div class="privacy-wrapper">
+        <div class="privacy-header">
+            <h1>Datenschutzerklärung</h1>
+            <p>// Rechtliche Hinweise</p>
+        </div>
         
         <div class="ds-section">
             <p>Der Schutz Ihrer personenbezogenen Daten ist mir ein wichtiges Anliegen. Nachfolgend informiere ich Sie über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten beim Besuch dieser Website gemäß der Datenschutz-Grundverordnung (DSGVO).</p>
@@ -73,7 +170,7 @@
 
         <div class="ds-section">
             <h2>2. Hosting und Zugriff auf die Website</h2>
-            <p>Diese Website wird als statische HTML-Website betrieben. Die Domain wird über Hetzner verwaltet. Soweit die Website über GitHub Pages bereitgestellt wird, erfolgt die technische Auslieferung über die Infrastruktur von GitHub.<br>
+            <p>Diese Website wird als statische HTML-Website betrieben. Die Domain wird über Hetzner verwaltet. Soweit die Website über GitHub Pages bereitgestellt wird, erfolgt die technische Auslieferung über die Infrastruktur von GitHub.<br><br>
             Beim Aufruf der Website werden durch den Hosting-Anbieter technisch erforderliche Informationen verarbeitet. Hierzu können insbesondere folgende Daten gehören:</p>
             <ul>
                 <li>IP-Adresse</li>
@@ -100,7 +197,7 @@
         </div>
 
         <div class="ds-section">
-            <h2>5. Weitergabe personenbezogener Daten & Social Media Links</h2>
+            <h2>5. Weitergabe & Social Media Links</h2>
             <p>Eine Weitergabe Ihrer personenbezogenen Daten an Dritte erfolgt grundsätzlich nicht, es sei denn, dies ist gesetzlich vorgeschrieben oder zur Bearbeitung Ihrer Anfrage erforderlich.<br><br>
             Auf dieser Website sind Links zu externen Social-Media-Plattformen (z. B. YouTube, Twitch, Instagram, TikTok, Snapchat) eingebunden. Es handelt sich hierbei lediglich um reine Hyperlinks. Beim Aufruf unserer Website findet keine automatische Datenübertragung an die Betreiber dieser Social-Media-Dienste statt. Erst wenn Sie auf einen entsprechenden Link klicken, verlassen Sie unsere Website und rufen die jeweilige externe Plattform auf.</p>
         </div>
@@ -134,9 +231,10 @@
             <p>Stand: August 2026.</p>
         </div>
 
-        <div style="margin-top: 35px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;">
-            <a href="index.html" class="button">← Zurück zur Startseite</a>
+        <div>
+            <a href="index.html" class="back-btn">← Zurück zur Startseite</a>
         </div>
     </div>
+
 </body>
 </html>
