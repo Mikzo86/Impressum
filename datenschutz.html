@@ -36,14 +36,16 @@
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             min-height: 100vh;
-            display: block; 
-            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 40px;
         }
 
         .agency-wrapper {
-            width: 100%;
-            max-width: 800px;
-            margin: 20px auto !important; 
+            width: min(800px, 100%);
+            margin: 0 auto;
             background: var(--card-bg);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
@@ -141,12 +143,12 @@
         .agency-footer {
             width: 100%;
             max-width: 800px;
-            margin: 20px auto 0 auto !important; 
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid var(--border-glass);
-            padding-top: 20px;
+            padding-top: 25px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.7rem;
             color: var(--text-muted);
@@ -173,6 +175,7 @@
         }
 
         @media (max-width: 768px) {
+            body { padding: 40px 20px; }
             .agency-footer { flex-direction: column; gap: 15px; text-align: center; }
             .agency-footer-links a { margin: 0 10px; }
         }
