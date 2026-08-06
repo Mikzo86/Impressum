@@ -45,75 +45,69 @@
 
         .agency-wrapper {
             width: 100%;
-            max-width: 900px;
+            max-width: 800px;
             margin: 10px 0;
             background: var(--card-bg);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--border-glass);
             border-radius: 20px;
-            padding: 40px;
+            padding: 25px 20px;
             box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-            animation: fadeInScale 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes fadeInScale {
-            0% { opacity: 0; transform: translateY(20px) scale(0.98); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .privacy-header {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             border-bottom: 1px solid var(--border-glass);
-            padding-bottom: 20px;
+            padding-bottom: 15px;
         }
 
         .privacy-header h1 {
-            font-size: 2.2rem;
+            font-size: 1.6rem;
             font-weight: 800;
             letter-spacing: -1px;
             background: linear-gradient(120deg, #ffffff 30%, var(--accent) 50%, #ffffff 70%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .privacy-header p {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
 
         .ds-section {
-            margin-bottom: 30px;
+            margin-bottom: 22px;
         }
 
         .ds-section h2 {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             color: var(--accent);
             font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .ds-section p {
-            line-height: 1.7;
+            line-height: 1.6;
             color: #cbd5e1;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             word-break: break-word;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .ds-section ul {
             margin-left: 20px;
             color: #cbd5e1;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 12px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
 
         .ds-section a {
@@ -128,8 +122,8 @@
 
         .back-btn {
             display: inline-block;
-            margin-top: 10px;
-            padding: 12px 24px;
+            margin-top: 25px;
+            padding: 12px 20px;
             background: rgba(56, 189, 248, 0.1);
             border: 1px solid rgba(56, 189, 248, 0.4);
             color: var(--accent);
@@ -149,13 +143,13 @@
 
         .agency-footer {
             width: 100%;
-            max-width: 900px;
+            max-width: 800px;
             margin: 20px auto 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid var(--border-glass);
-            padding-top: 25px;
+            padding-top: 20px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.7rem;
             color: var(--text-muted);
@@ -177,12 +171,11 @@
         @media (min-width: 768px) {
             body { padding: 60px 40px; }
             .agency-wrapper { padding: 40px; }
+            .privacy-header h1 { font-size: 2.2rem; }
+            .ds-section p, .ds-section ul { font-size: 0.95rem; }
         }
 
         @media (max-width: 768px) {
-            body { padding: 40px 20px; }
-            .agency-wrapper { padding: 25px; }
-            .privacy-header h1 { font-size: 1.8rem; }
             .agency-footer { flex-direction: column; gap: 15px; text-align: center; }
             .agency-footer-links a { margin: 0 10px; }
         }
