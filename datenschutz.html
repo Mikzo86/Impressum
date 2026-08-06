@@ -13,7 +13,7 @@
     <style>
         :root {
             --bg-dark: #020408;
-            --card-bg: rgba(10, 14, 23, 0.75);
+            --card-bg: rgba(10, 14, 23, 0.6);
             --border-glass: rgba(255, 255, 255, 0.08);
             --border-active: rgba(56, 189, 248, 0.5);
             --text-main: #f8fafc;
@@ -39,20 +39,19 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            align-items: center;
-            padding: 40px 20px;
+            padding: 60px 40px;
         }
 
-        .privacy-wrapper {
+        .agency-wrapper {
             width: 100%;
             max-width: 900px;
-            margin: 20px auto;
+            margin: 0 auto;
             background: var(--card-bg);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--border-glass);
             border-radius: 20px;
-            padding: 35px 30px;
+            padding: 40px;
             box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
             animation: fadeInScale 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -63,20 +62,20 @@
         }
 
         .privacy-header {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             border-bottom: 1px solid var(--border-glass);
-            padding-bottom: 15px;
+            padding-bottom: 20px;
         }
 
         .privacy-header h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 800;
             letter-spacing: -1px;
             background: linear-gradient(120deg, #ffffff 30%, var(--accent) 50%, #ffffff 70%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .privacy-header p {
@@ -84,24 +83,24 @@
             font-size: 0.75rem;
             color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
         .ds-section {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .ds-section h2 {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--accent);
             font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .ds-section p {
-            line-height: 1.6;
+            line-height: 1.7;
             color: #cbd5e1;
             font-size: 0.95rem;
             word-break: break-word;
@@ -112,7 +111,7 @@
             margin-left: 20px;
             color: #cbd5e1;
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 12px;
         }
 
@@ -128,8 +127,8 @@
 
         .back-btn {
             display: inline-block;
-            margin-top: 25px;
-            padding: 12px 20px;
+            margin-top: 10px;
+            padding: 12px 24px;
             background: rgba(56, 189, 248, 0.1);
             border: 1px solid rgba(56, 189, 248, 0.4);
             color: var(--accent);
@@ -150,7 +149,7 @@
         .agency-footer {
             width: 100%;
             max-width: 900px;
-            margin: 20px auto 0 auto;
+            margin: 40px auto 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -174,13 +173,10 @@
             color: var(--accent);
         }
 
-        @media (min-width: 768px) {
-            body { padding: 60px 40px; }
-            .privacy-wrapper { padding: 40px; }
-            .privacy-header h1 { font-size: 2.4rem; }
-        }
-
         @media (max-width: 768px) {
+            body { padding: 40px 20px; }
+            .agency-wrapper { padding: 25px; }
+            .privacy-header h1 { font-size: 2rem; }
             .agency-footer { flex-direction: column; gap: 15px; text-align: center; }
             .agency-footer-links a { margin: 0 10px; }
         }
@@ -188,7 +184,7 @@
 </head>
 <body>
 
-    <div class="privacy-wrapper">
+    <div class="agency-wrapper">
         <div class="privacy-header">
             <h1>Datenschutzerklärung</h1>
             <p>// DSGVO konform</p>
