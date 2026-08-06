@@ -13,7 +13,7 @@
     <style>
         :root {
             --bg-dark: #020408;
-            --card-bg: rgba(10, 14, 23, 0.6);
+            --card-bg: rgba(10, 14, 23, 0.75);
             --border-glass: rgba(255, 255, 255, 0.08);
             --border-active: rgba(56, 189, 248, 0.5);
             --text-main: #f8fafc;
@@ -38,14 +38,15 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: space-between;
-            padding: 60px 40px;
+            padding: 20px 15px;
         }
 
         .agency-wrapper {
             width: 100%;
             max-width: 900px;
-            margin: 0 auto;
+            margin: 10px 0;
             background: var(--card-bg);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
@@ -68,7 +69,7 @@
         }
 
         .privacy-header h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             letter-spacing: -1px;
             background: linear-gradient(120deg, #ffffff 30%, var(--accent) 50%, #ffffff 70%);
@@ -149,7 +150,7 @@
         .agency-footer {
             width: 100%;
             max-width: 900px;
-            margin: 40px auto 0 auto;
+            margin: 20px auto 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -173,10 +174,15 @@
             color: var(--accent);
         }
 
+        @media (min-width: 768px) {
+            body { padding: 60px 40px; }
+            .agency-wrapper { padding: 40px; }
+        }
+
         @media (max-width: 768px) {
             body { padding: 40px 20px; }
             .agency-wrapper { padding: 25px; }
-            .privacy-header h1 { font-size: 2rem; }
+            .privacy-header h1 { font-size: 1.8rem; }
             .agency-footer { flex-direction: column; gap: 15px; text-align: center; }
             .agency-footer-links a { margin: 0 10px; }
         }
