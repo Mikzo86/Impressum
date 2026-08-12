@@ -433,34 +433,31 @@
     </footer>
 
 
-    <!-- SAUBERER BESUCHERZÄHLER (OHNE FEHLERHAFTE WIDGET-SKRIPTE) -->
-    <script>
-        // Sendet manuell einen Zähl-Ping an GoatCounter (ganz ohne fehlerhaftes UI-Injection-Skript)
-        if (!location.hostname.includes('localhost') && !location.protocol.includes('file')) {
-            fetch('https://mikzo.goatcounter.com/count?p=' + encodeURIComponent(location.pathname), {
-                method: 'GET',
-                mode: 'no-cors'
-            }).catch(() => {});
-        }
+    <!-- OFFIZIELLES GOATCOUNTER SKRIPT -->
+    <script
+        data-goatcounter="https://mikzo.goatcounter.com/count"
+        async
+        src="//gc.zgo.at/count.js">
+    </script>
 
-        // Holt im Anschluss die aktuelle Besucheranzahl als JSON ab und trägt sie ein
-        fetch('https://mikzo.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json')
-            .then(response => {
-                if (!response.ok) throw new Error('Netzwerk-Antwort war nicht ok');
-                return response.json();
-            })
-            .then(data => {
-                const countElement = document.getElementById('visitor-count');
-                if (countElement && data.count) {
-                    countElement.innerText = data.count.replace(/\s/g, '');
+    <!-- KORREKTER CALLBACK UM DIE ZAHL EINZUSETZEN -->
+    <script>
+        window.addEventListener('load', function() {
+            let checks = 0;
+            const checkInterval = setInterval(function() {
+                checks++;
+                if (window.goatcounter && typeof window.goatcounter.visit_count === 'function') {
+                    clearInterval(checkInterval);
+                    window.goatcounter.visit_count({
+                        append: '#visitor-count',
+                        type: 'html',
+                        no_branding: true
+                    });
+                } else if (checks > 50) {
+                    clearInterval(checkInterval);
                 }
-            })
-            .catch(() => {
-                const countElement = document.getElementById('visitor-count');
-                if (countElement) {
-                    countElement.innerText = '—';
-                }
-            });
+            }, 100);
+        });
     </script>
 
 </body>
