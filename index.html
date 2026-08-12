@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Verhindert die Indexierung durch Suchmaschinen -->
     <meta name="robots" content="noindex, nofollow">
-    
+
     <!-- Social Media Vorschau-Tags -->
     <meta property="og:title" content="MIKZO — Offizielle Kanäle">
     <meta property="og:description" content="Alle offiziellen Social-Media-Kanäle von MIKZO auf einen Blick.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="./preview.jpg">
 
-    <!-- Dynamisches Favicon (Stilvolles M) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23020408%22/><text x=%2250%%22 y=%2254%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22'Plus Jakarta Sans', sans-serif%22 font-weight=%22800%22 font-size=%2265%22 fill=%22%2338bdf8%22>M</text></svg>">
+    <!-- Dynamisches Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23020408%22/><text x=%2250%%22 y=%2254%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22sans-serif%22 font-weight=%22800%22 font-size=%2265%22 fill=%22%2338bdf8%22>M</text></svg>">
 
     <title>MIKZO — Offizielle Kanäle</title>
+
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --bg-dark: #020408;
@@ -37,33 +40,53 @@
 
         body {
             background-color: var(--bg-dark);
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(14, 165, 233, 0.05) 0%, transparent 40%);
+            background-image:
+                radial-gradient(
+                    circle at 15% 15%,
+                    rgba(56, 189, 248, 0.08) 0%,
+                    transparent 40%
+                ),
+                radial-gradient(
+                    circle at 85% 85%,
+                    rgba(14, 165, 233, 0.05) 0%,
+                    transparent 40%
+                );
+
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
             min-height: 100vh;
+
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
+
             padding: 60px 40px;
             overflow-x: hidden;
-            align-items: center;
         }
 
         .agency-wrapper {
-            width: min(900px,100%);
+            width: min(900px, 100%);
             margin: 0 auto;
+
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 50px;
             align-items: center;
+
             animation: fadeInScale 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         @keyframes fadeInScale {
-            0% { opacity: 0; transform: translateY(20px) scale(0.98); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.98);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         .agency-brand {
@@ -77,16 +100,30 @@
             font-weight: 800;
             letter-spacing: -2px;
             line-height: 0.95;
-            background: linear-gradient(120deg, #ffffff 30%, var(--accent) 50%, #ffffff 70%);
+
+            background: linear-gradient(
+                120deg,
+                #ffffff 30%,
+                var(--accent) 50%,
+                #ffffff 70%
+            );
+
             background-size: 200% auto;
+
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+
             animation: shimmer 6s linear infinite;
         }
 
         @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         .agency-brand p {
@@ -107,79 +144,144 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
             background: var(--card-bg);
+
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
+
             border: 1px solid var(--border-glass);
             padding: 20px 24px;
             border-radius: 16px;
+
             text-decoration: none;
             color: var(--text-main);
+
             font-weight: 600;
             font-size: 1rem;
+
             position: relative;
             overflow: hidden;
+
             opacity: 0;
             transform: translateX(30px);
-            animation: slideInLinks 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+            animation:
+                slideInLinks
+                0.8s
+                cubic-bezier(0.16, 1, 0.3, 1)
+                forwards;
+
+            transition:
+                all
+                0.4s
+                cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .agency-card:nth-child(1) { animation-delay: 0.2s; }
-        .agency-card:nth-child(2) { animation-delay: 0.3s; }
-        .agency-card:nth-child(3) { animation-delay: 0.4s; }
-        .agency-card:nth-child(4) { animation-delay: 0.5s; }
-        .agency-card:nth-child(5) { animation-delay: 0.6s; }
+        .agency-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .agency-card:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .agency-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .agency-card:nth-child(4) {
+            animation-delay: 0.5s;
+        }
+
+        .agency-card:nth-child(5) {
+            animation-delay: 0.6s;
+        }
 
         @keyframes slideInLinks {
-            to { opacity: 1; transform: translateX(0); }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .agency-card::before {
             content: '';
+
             position: absolute;
             top: 0;
             left: 0;
+
             width: 3px;
             height: 100%;
+
             background: var(--accent);
             opacity: 0;
+
             transition: opacity 0.3s ease;
         }
 
         .agency-card:hover {
             background: rgba(14, 20, 33, 0.9);
             border-color: var(--border-active);
+
             transform: translateX(6px);
-            box-shadow: 0 20px 40px -15px var(--accent-glow);
+
+            box-shadow:
+                0 20px 40px -15px
+                var(--accent-glow);
         }
 
         .agency-card:hover::before {
             opacity: 1;
         }
 
+        /* =========================
+           FOOTER
+        ========================= */
+
         .agency-footer {
             width: 100%;
             max-width: 900px;
+
             margin: 40px auto 0 auto;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             border-top: 1px solid var(--border-glass);
             padding-top: 25px;
+
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.7rem;
+
             color: var(--text-muted);
+
             text-transform: uppercase;
             letter-spacing: 2px;
+
             opacity: 0;
-            animation: fadeInScale 1s ease 0.8s forwards;
+
+            animation:
+                fadeInScale
+                1s
+                ease
+                0.8s
+                forwards;
+        }
+
+        .agency-footer-links {
+            display: flex;
+            align-items: center;
         }
 
         .agency-footer-links a {
             color: var(--text-muted);
             text-decoration: none;
+
             margin-left: 20px;
+
             transition: color 0.2s ease;
         }
 
@@ -187,40 +289,191 @@
             color: var(--accent);
         }
 
+        /* =========================
+           BESUCHERZÄHLER
+        ========================= */
+
+        .visitor-counter {
+            color: var(--text-muted);
+            white-space: nowrap;
+
+            transition: color 0.2s ease;
+        }
+
+        .visitor-counter:hover {
+            color: var(--accent);
+        }
+
+        #visitor-count {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
         @media (max-width: 768px) {
-            body { padding: 40px 20px; }
-            .agency-wrapper { grid-template-columns: 1fr; gap: 35px; }
-            .agency-brand h1 { font-size: 3.2rem; }
-            .agency-footer { flex-direction: column; gap: 15px; text-align: center; }
-            .agency-footer-links a { margin: 0 10px; }
+
+            body {
+                padding: 40px 20px;
+            }
+
+            .agency-wrapper {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .agency-brand h1 {
+                font-size: 3.2rem;
+            }
+
+            .agency-footer {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .agency-footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .agency-footer-links a {
+                margin: 0;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="agency-wrapper">
+
         <div class="agency-brand">
             <h1>MIKZO</h1>
             <p>// Offizielle Kanäle</p>
         </div>
 
         <div class="agency-links">
-            <a href="https://www.youtube.com/@Mikzo86?sub_confirmation=1" target="_blank" rel="noopener noreferrer external" class="agency-card">YouTube</a>
-            <a href="https://www.twitch.tv/mikzo86" target="_blank" rel="noopener noreferrer external" class="agency-card">Twitch</a>
-            <a href="https://www.instagram.com/mikzoyt" target="_blank" rel="noopener noreferrer external" class="agency-card">Instagram</a>
-            <a href="https://www.tiktok.com/@mikzotk" target="_blank" rel="noopener noreferrer external" class="agency-card">TikTok</a>
-            <a href="https://www.snapchat.com/@mikzo86" target="_blank" rel="noopener noreferrer external" class="agency-card">Snapchat</a>
+
+            <a
+                href="https://www.youtube.com/@Mikzo86?sub_confirmation=1"
+                target="_blank"
+                rel="noopener noreferrer external"
+                class="agency-card"
+            >
+                YouTube
+            </a>
+
+            <a
+                href="https://www.twitch.tv/mikzo86"
+                target="_blank"
+                rel="noopener noreferrer external"
+                class="agency-card"
+            >
+                Twitch
+            </a>
+
+            <a
+                href="https://www.instagram.com/mikzoyt"
+                target="_blank"
+                rel="noopener noreferrer external"
+                class="agency-card"
+            >
+                Instagram
+            </a>
+
+            <a
+                href="https://www.tiktok.com/@mikzotk"
+                target="_blank"
+                rel="noopener noreferrer external"
+                class="agency-card"
+            >
+                TikTok
+            </a>
+
+            <a
+                href="https://www.snapchat.com/@mikzo86"
+                target="_blank"
+                rel="noopener noreferrer external"
+                class="agency-card"
+            >
+                Snapchat
+            </a>
+
         </div>
     </div>
 
+
     <footer class="agency-footer">
-        <div>© 2026 MIKZO</div>
-        <div class="agency-footer-links">
-            <a href="/impressum.html">Impressum</a>
-            <a href="/datenschutz.html">Datenschutz</a>
+
+        <div>
+            © 2026 MIKZO
         </div>
+
+        <div class="agency-footer-links">
+
+            <!-- Besucherzähler -->
+            <span class="visitor-counter">
+                // <span id="visitor-count">—</span> BESUCHE
+            </span>
+
+            <a href="/impressum.html">
+                Impressum
+            </a>
+
+            <a href="/datenschutz.html">
+                Datenschutz
+            </a>
+
+        </div>
+
     </footer>
 
-    
+
+    <!-- =====================================================
+         GOATCOUNTER
+         =====================================================
+
+         HIER DEINEN GOATCOUNTER-CODE EINTRAGEN.
+
+         Beispiel:
+         https://mikzo.goatcounter.com/count
+
+         Ersetze "DEINCODE" mit deinem tatsächlichen Code.
+    ====================================================== -->
+
+   <script
+    data-goatcounter="https://mikzo.goatcounter.com/count"
+    async
+    src="//gc.zgo.at/count.js">
+   </script>
+
+
+    <!-- Besucherzahl anzeigen -->
+    <script>
+        const visitorCount = document.getElementById('visitor-count');
+
+        const waitForGoatCounter = setInterval(() => {
+
+            if (
+                window.goatcounter &&
+                window.goatcounter.visit_count
+            ) {
+
+                clearInterval(waitForGoatCounter);
+
+                window.goatcounter.visit_count({
+                    append: '#visitor-count',
+                    no_branding: true
+                });
+
+            }
+
+        }, 100);
+    </script>
+
 </body>
 </html>
