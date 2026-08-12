@@ -13,7 +13,7 @@
             --border-glass: rgba(255, 255, 255, 0.08);
             --border-active: rgba(56, 189, 248, 0.5);
             --text-main: #f8fafc;
-            --text-muted: #64748b;
+            --text-muted: #94a3b8;
             --accent: #38bdf8;
             --accent-glow: rgba(56, 189, 248, 0.2);
         }
@@ -35,20 +35,19 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            padding: 20px 15px;
+            justify-content: center;
+            padding: 40px 20px;
         }
 
         .privacy-wrapper {
             width: 100%;
             max-width: 700px;
-            margin: 10px 0;
             background: var(--card-bg);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--border-glass);
             border-radius: 20px;
-            padding: 30px 25px;
+            padding: 40px;
             box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
         }
 
@@ -59,7 +58,7 @@
         }
 
         .privacy-header h1 {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 800;
             letter-spacing: -1px;
             background: linear-gradient(120deg, #ffffff 30%, var(--accent) 50%, #ffffff 70%);
@@ -71,37 +70,34 @@
 
         .privacy-header p {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
         .ds-section {
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
 
         .ds-section h2 {
-            font-size: 0.75rem;
+            font-size: 1rem;
             color: var(--accent);
-            font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
 
         .ds-section p {
-            line-height: 1.7;
-            color: #cbd5e1;
+            line-height: 1.6;
+            color: var(--text-muted);
             font-size: 0.95rem;
-            font-weight: 400;
             word-break: break-word;
         }
 
         .ds-section a {
             color: var(--accent);
             text-decoration: none;
-            word-break: break-all;
         }
 
         .ds-section a:hover {
@@ -110,7 +106,7 @@
 
         .back-btn {
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 20px;
             padding: 12px 20px;
             background: rgba(56, 189, 248, 0.1);
             border: 1px solid rgba(56, 189, 248, 0.4);
@@ -129,11 +125,10 @@
             box-shadow: 0 0 20px var(--accent-glow);
         }
 
-        @media (min-width: 768px) {
-            body { padding: 60px 40px; }
-            .privacy-wrapper { padding: 45px; margin: auto 0; }
-            .privacy-header h1 { font-size: 2.2rem; }
-            .ds-section p { font-size: 0.95rem; }
+        @media (max-width: 768px) {
+            body { padding: 20px 15px; }
+            .privacy-wrapper { padding: 25px; }
+            .privacy-header h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -145,40 +140,42 @@
             <p>// Anbieterkennzeichnung</p>
         </div>
         
-        <div class="ds-section">
-            <h2>Angaben gemäß § 5 TMG</h2>
-            <p>
-                Mike Wehmer<br>
-                c/o Impressumservice Dein-Impressum<br>
-                Stettiner Str. 41<br>
-                35410 Hungen<br>
-                Deutschland
-            </p>
-        </div>
+        <div class="identity-section">
+            <div class="ds-section">
+                <h2>Angaben gemäß § 5 TMG</h2>
+                <p>
+                    Mike Wehmer<br>
+                    c/o Impressumservice Dein-Impressum<br>
+                    Stettiner Str. 41<br>
+                    35410 Hungen<br>
+                    Deutschland
+                </p>
+            </div>
 
-        <div class="ds-section">
-            <h2>Kontakt</h2>
-            <p>
-                E-Mail: <a href="mailto:mikzo@gmx.de">mikzo@gmx.de</a><br>
-                Telefon: <a href="tel:+4915792341658">0157 9234 1658</a>
-            </p>
-        </div>
+            <div class="ds-section">
+                <h2>Kontakt</h2>
+                <p>
+                    E-Mail: <a href="mailto:mikzo@gmx.de">mikzo@gmx.de</a><br>
+                    Telefon: <a href="tel:+4915792341658">0157 9234 1658</a>
+                </p>
+            </div>
 
-        <div class="ds-section">
-            <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
-            <p>
-                Mike Wehmer<br>
-                Stettiner Str. 41<br>
-                35410 Hungen<br>
-                Deutschland
-            </p>
-        </div>
+            <div class="ds-section">
+                <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+                <p>
+                    Mike Wehmer<br>
+                    Stettiner Str. 41<br>
+                    35410 Hungen<br>
+                    Deutschland
+                </p>
+            </div>
 
-        <div class="ds-section">
-            <h2>Streitschlichtung</h2>
-            <p>
-                Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-            </p>
+            <div class="ds-section">
+                <h2>Streitschlichtung</h2>
+                <p>
+                    Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+                </p>
+            </div>
         </div>
 
         <div>
