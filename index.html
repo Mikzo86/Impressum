@@ -433,18 +433,22 @@
     </footer>
 
 
-    <!-- GOATCOUNTER ZÄHL-SKRIPT -->
-    <script
-        data-goatcounter="https://mikzo.goatcounter.com/count"
-        async
-        src="//gc.zgo.at/count.js">
-    </script>
-
-
-    <!-- REINE BESUCHERZAHL API ABRUF -->
+    <!-- SAUBERER BESUCHERZÄHLER (OHNE FEHLERHAFTE WIDGET-SKRIPTE) -->
     <script>
+        // Sendet manuell einen Zähl-Ping an GoatCounter (ganz ohne fehlerhaftes UI-Injection-Skript)
+        if (!location.hostname.includes('localhost') && !location.protocol.includes('file')) {
+            fetch('https://mikzo.goatcounter.com/count?p=' + encodeURIComponent(location.pathname), {
+                method: 'GET',
+                mode: 'no-cors'
+            }).catch(() => {});
+        }
+
+        // Holt im Anschluss die aktuelle Besucheranzahl als JSON ab und trägt sie ein
         fetch('https://mikzo.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) throw new Error('Netzwerk-Antwort war nicht ok');
+                return response.json();
+            })
             .then(data => {
                 const countElement = document.getElementById('visitor-count');
                 if (countElement && data.count) {
