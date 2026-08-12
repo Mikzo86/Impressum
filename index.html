@@ -237,7 +237,7 @@
         }
 
         /* =========================
-           FOOTER
+            FOOTER
         ========================= */
 
         .agency-footer {
@@ -290,7 +290,7 @@
         }
 
         /* =========================
-           BESUCHERZÄHLER
+            BESUCHERZÄHLER
         ========================= */
 
         .visitor-counter {
@@ -310,7 +310,7 @@
         }
 
         /* =========================
-           MOBILE
+            MOBILE
         ========================= */
 
         @media (max-width: 768px) {
@@ -433,18 +433,7 @@
     </footer>
 
 
-    <!-- =====================================================
-         GOATCOUNTER
-         =====================================================
-
-         HIER DEINEN GOATCOUNTER-CODE EINTRAGEN.
-
-         Beispiel:
-         https://mikzo.goatcounter.com/count
-
-         Ersetze "DEINCODE" mit deinem tatsächlichen Code.
-    ====================================================== -->
-
+    <!-- GOATCOUNTER SCRIPT -->
    <script
     data-goatcounter="https://mikzo.goatcounter.com/count"
     async
@@ -452,26 +441,21 @@
    </script>
 
 
-    <!-- Besucherzahl anzeigen -->
+    <!-- Besucherzahl sauber anzeigen -->
     <script>
-        const visitorCount = document.getElementById('visitor-count');
-
         const waitForGoatCounter = setInterval(() => {
-
-            if (
-                window.goatcounter &&
-                window.goatcounter.visit_count
-            ) {
-
+            if (window.goatcounter && window.goatcounter.visit_count) {
                 clearInterval(waitForGoatCounter);
-
                 window.goatcounter.visit_count({
-                    append: '#visitor-count',
-                    no_branding: true
+                    no_branding: true,
+                    callback: (count) => {
+                        const el = document.getElementById('visitor-count');
+                        if (el) {
+                            el.innerText = count;
+                        }
+                    }
                 });
-
             }
-
         }, 100);
     </script>
 
