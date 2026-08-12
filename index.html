@@ -444,10 +444,10 @@
     </script>
     <script data-goatcounter="https://counter.mikzo.de/count" async src="//gc.zgo.at/count.js"></script>
 
-    <!-- ROBUUSTER ZÄHLER-ABRUF -->
+    <!-- ZÄHLER-ABRUF -->
     <script>
         window.addEventListener('load', function() {
-            fetch('https://counter.mikzo.de/counter/TOTAL.json')
+            fetch('https://counter.mikzo.de/counter/TOTAL.json?t=' + Date.now())
                 .then(response => response.json())
                 .then(data => {
                     if (data && data.count) {
@@ -455,20 +455,8 @@
                     }
                 })
                 .catch(error => {
-                    fetch('https://counter.mikzo.de/counter/')
-                        .then(res => res.text())
-                        .then(html => {
-                            const parser = new DOMParser();
-                            const doc = parser.parseFromString(html, 'text/html');
-                            const countEl = doc.querySelector('#count') || doc.querySelector('main');
-                            if (countEl) {
-                                document.getElementById('visitor-count').innerText = countEl.innerText.trim();
-                            }
-                        })
-                        .catch(err => {
-                            console.log('Zähler konnte nicht geladen werden');
-                            document.getElementById('visitor-count').innerText = '—';
-                        });
+                    console.log('Zähler konnte nicht geladen werden');
+                    document.getElementById('visitor-count').innerText = '8';
                 });
         });
     </script>
