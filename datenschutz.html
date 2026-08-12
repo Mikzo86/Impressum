@@ -7,14 +7,24 @@
     <title>Datenschutzerklärung — MIKZO</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
+        :root {<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Datenschutzerklärung — MIKZO</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
         :root {
             --bg-dark: #020408;
-            --card-bg: rgba(10, 14, 23, 0.6);
+            --card-bg: rgba(10, 14, 23, 0.75);
             --border-glass: rgba(255, 255, 255, 0.08);
             --border-active: rgba(56, 189, 248, 0.5);
             --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            --text-muted: #cbd5e1;
             --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.2);
         }
 
         * {
@@ -34,153 +44,179 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 16px;
+            justify-content: space-between;
+            padding: 20px 15px;
         }
 
-        .legal-container {
-            width: min(800px, 100%);
+        .privacy-wrapper {
+            width: 100%;
+            max-width: 700px;
+            margin: 10px 0;
             background: var(--card-bg);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--border-glass);
             border-radius: 20px;
-            padding: 45px;
+            padding: 30px 25px;
             box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
         }
 
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: var(--text-main);
-            letter-spacing: -1px;
+        .privacy-header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 20px;
         }
 
-        .subtitle {
+        .privacy-header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(120deg, #ffffff 30%, var(--accent) 50%, #ffffff 70%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .privacy-header p {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 35px;
         }
 
-        h2 {
-            font-size: 1.2rem;
-            font-weight: 700;
+        .ds-section {
+            margin-bottom: 25px;
+        }
+
+        .ds-section h2 {
+            font-size: 0.75rem;
             color: var(--accent);
-            margin-top: 30px;
-            margin-bottom: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
 
-        p, li {
-            font-size: 0.95rem;
+        .ds-section p, .ds-section li {
             line-height: 1.7;
-            color: var(--text-muted);
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            font-weight: 400;
+            word-break: break-word;
             margin-bottom: 12px;
         }
 
-        ul {
+        .ds-section ul {
             margin-left: 20px;
             margin-bottom: 15px;
         }
 
-        a {
+        .ds-section a {
             color: var(--accent);
             text-decoration: none;
-            transition: opacity 0.2s;
-            word-break: break-word;
+            word-break: break-all;
         }
 
-        a:hover {
-            opacity: 0.8;
+        .ds-section a:hover {
             text-decoration: underline;
         }
 
-        .back-link {
+        .back-btn {
             display: inline-block;
-            margin-top: 30px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid var(--border-glass);
-            padding: 10px 20px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.02);
-            color: var(--text-main);
-        }
-
-        .back-link:hover {
-            border-color: var(--border-active);
-            background: rgba(56, 189, 248, 0.05);
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            color: var(--accent);
+            border-radius: 12px;
             text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 20px 12px;
-            }
-            .legal-container {
-                padding: 25px 20px;
-                border-radius: 14px;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
+        .back-btn:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        @media (min-width: 768px) {
+            body { padding: 60px 40px; }
+            .privacy-wrapper { padding: 45px; margin: auto 0; }
+            .privacy-header h1 { font-size: 2.2rem; }
+            .ds-section p { font-size: 0.95rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="legal-container">
-        <h1>Datenschutzerklärung</h1>
-        <div class="subtitle">// DSGVO konform</div>
+    <div class="privacy-wrapper">
+        <div class="privacy-header">
+            <h1>Datenschutzerklärung</h1>
+            <p>// DSGVO konform</p>
+        </div>
 
-        <h2>1. Datenschutz auf einen Blick</h2>
-        <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
-        <p>Da diese Website als reine Link-Sammlung (Landingpage) dient, erheben, speichern oder verarbeiten wir als Betreiber selbst <strong>keinerlei</strong> aktiv eingegebenen personenbezogenen Daten von Ihnen. Sie haben auf dieser Seite weder die Möglichkeit, sich einzuloggen, noch Formulare auszufüllen oder Daten zu hinterlegen.</p>
+        <div class="ds-section">
+            <h2>1. Datenschutz auf einen Blick</h2>
+            <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+            <p>Da diese Website als reine Link-Sammlung (Landingpage) dient, erheben, speichern oder verarbeiten wir als Betreiber selbst <strong>keinerlei</strong> aktiv eingegebenen personenbezogenen Daten von Ihnen. Sie haben auf dieser Seite weder die Möglichkeit, sich einzuloggen, noch Formulare auszufüllen oder Daten zu hinterlegen.</p>
+        </div>
 
-        <h2>2. Hosting über GitHub Pages</h2>
-        <p>Wir hosten die Inhalte unserer Website bei folgendem Anbieter:</p>
-        <p>
-            GitHub Inc.<br>
-            88 Colin P Kelly Jr St<br>
-            San Francisco, CA 94107<br>
-            USA
-        </p>
-        <p>Details entnehmen Sie der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
-        <p>Die Verwendung von GitHub Pages erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website.</p>
+        <div class="ds-section">
+            <h2>2. Hosting über GitHub Pages</h2>
+            <p>Wir hosten die Inhalte unserer Website bei folgendem Anbieter:</p>
+            <p>
+                GitHub Inc.<br>
+                88 Colin P Kelly Jr St<br>
+                San Francisco, CA 94107<br>
+                USA
+            </p>
+            <p>Details entnehmen Sie der Datenschutzerklärung von GitHub: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement</a>.</p>
+            <p>Die Verwendung von GitHub Pages erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website.</p>
+        </div>
 
-        <h2>3. Besucherzähler &amp; Reichweitenmessung (GoatCounter)</h2>
-        <p>Zur statistischen Messung der Besuche auf unserer Website nutzen wir den datenschutzfreundlichen Analysedienst <strong>GoatCounter</strong>. Dieser ist so konzipiert, dass er vollständig auf Cookies verzichtet und keine personenbezogenen IP-Adressen dauerhaft speichert.</p>
-        <p>Es werden beim Aufruf der Seite technische Daten wie ein anonymisierter Hash aus IP-Adresse und User-Agent (der nach kurzer Zeit verworfen wird) sowie aufgerufene Pfade erfasst, um reine Besucherzahlen zu zählen. Es findet kein Tracking über verschiedene Websites hinweg statt.</p>
-        <p>Die Nutzung von GoatCounter erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in der statistischen Auswertung des Nutzerverhaltens zur Optimierung unseres Webauftritts.</p>
+        <div class="ds-section">
+            <h2>3. Besucherzähler &amp; Reichweitenmessung (GoatCounter)</h2>
+            <p>Zur statistischen Messung der Besuche auf unserer Website nutzen wir den datenschutzfreundlichen Analysedienst <strong>GoatCounter</strong>. Dieser ist so konzipiert, dass er vollständig auf Cookies verzichtet und keine personenbezogenen IP-Adressen dauerhaft speichert.</p>
+            <p>Es werden beim Aufruf der Seite technische Daten wie ein anonymisierter Hash aus IP-Adresse und User-Agent (der nach kurzer Zeit verworfen wird) sowie aufgerufene Pfade erfasst, um reine Besucherzahlen zu zählen. Es findet kein Tracking über verschiedene Websites hinweg statt.</p>
+            <p>Die Nutzung von GoatCounter erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in der statistischen Auswertung des Nutzerverhaltens zur Optimierung unseres Webauftritts.</p>
+        </div>
 
-        <h2>4. Verantwortliche Stelle &amp; Ihre Rechte</h2>
-        <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
-        <p>
-            Mike Wehmer<br>
-            Stettiner Str. 41<br>
-            35410 Hungen<br>
-            Deutschland<br>
-            E-Mail: <a href="mailto:mikzo@gmx.de">mikzo@gmx.de</a>
-        </p>
+        <div class="ds-section">
+            <h2>4. Verantwortliche Stelle &amp; Ihre Rechte</h2>
+            <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+            <p>
+                Mike Wehmer<br>
+                Stettiner Str. 41<br>
+                35410 Hungen<br>
+                Deutschland<br>
+                E-Mail: <a href="mailto:mikzo@gmx.de">mikzo@gmx.de</a>
+            </p>
 
-        <p><strong>Widerruf Ihrer Einwilligung</strong></p>
-        <p>Da wir von Haus aus keine Profildaten speichern, laufen auch keine aktiven Einwilligungsprozesse. Sollten Sie uns freiwillig per E-Mail kontaktieren, können Sie der Speicherung Ihrer Kontaktdaten natürlich jederzeit formlos per E-Mail widersprechen.</p>
+            <p><strong>Widerruf Ihrer Einwilligung</strong></p>
+            <p>Da wir von Haus aus keine Profildaten speichern, laufen auch keine aktiven Einwilligungsprozesse. Sollten Sie uns freiwillig per E-Mail kontaktieren, können Sie der Speicherung Ihrer Kontaktdaten natürlich jederzeit formlos per E-Mail widersprechen.</p>
 
-        <p><strong>Beschwerderecht bei der Aufsichtsbehörde</strong></p>
-        <p>Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde zu.</p>
+            <p><strong>Beschwerderecht bei der Aufsichtsbehörde</strong></p>
+            <p>Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht bei einer Aufsichtsbehörde zu.</p>
+        </div>
 
-        <h2>5. Server-Log-Dateien (Technischer Betrieb)</h2>
-        <p>Der Provider der Seiten (GitHub) erhebt und speichert automatisch technische Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch übermittelt (z.B. Browsertyp, Betriebssystem, IP-Adresse, Uhrzeit der Anfrage). Auf diese Daten haben wir als Betreiber keinen direkten Zugriff; sie dienen lediglich dem sicheren technischen Betrieb des Hostings.</p>
+        <div class="ds-section">
+            <h2>5. Server-Log-Dateien (Technischer Betrieb)</h2>
+            <p>Der Provider der Seiten (GitHub) erhebt und speichert automatisch technische Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch übermittelt (z.B. Browsertyp, Betriebssystem, IP-Adresse, Uhrzeit der Anfrage). Auf diese Daten haben wir als Betreiber keinen direkten Zugriff; sie dienen lediglich dem sicheren technischen Betrieb des Hostings.</p>
+        </div>
 
-        <h2>6. Social Media &amp; externe Links</h2>
-        <p>Auf dieser Website sind Links zu unseren externen Social-Media-Profilen (YouTube, Twitch, Instagram, TikTok, Snapchat) eingebunden. Bitte beachten Sie, dass beim Anklicken dieser Links Daten an die jeweiligen Plattformen übertragen werden. Wir haben keinen Einfluss auf die Datenerhebung und Datenverarbeitung durch diese externen Dienste.</p>
+        <div class="ds-section">
+            <h2>6. Social Media &amp; externe Links</h2>
+            <p>Auf dieser Website sind Links zu unseren externen Social-Media-Profilen (YouTube, Twitch, Instagram, TikTok, Snapchat) eingebunden. Bitte beachten Sie, dass beim Anklicken dieser Links Daten an die jeweiligen Plattformen übertragen werden. Wir haben keinen Einfluss auf die Datenerhebung und Datenverarbeitung durch diese externen Dienste.</p>
+        </div>
 
-        <br>
-        <a href="/" class="back-link">← Zurück zur Startseite</a>
+        <div>
+            <a href="/" class="back-btn">← Zurück zur Startseite</a>
+        </div>
     </div>
 
 </body>
