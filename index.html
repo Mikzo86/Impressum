@@ -436,31 +436,30 @@
 
 
     <!-- OFFIZIELLES GOATCOUNTER SKRIPT -->
-<script>
-    window.goatcounter = {
-        allow_local: true,
-        endpoint: 'https://counter.mikzo.de/count'
-    };
-</script>
-<script data-goatcounter="https://counter.mikzo.de/count" async src="//gc.zgo.at/count.js"></script>
+    <script>
+        window.goatcounter = {
+            allow_local: true,
+            endpoint: 'https://counter.mikzo.de/count'
+        };
+    </script>
+    <script data-goatcounter="https://counter.mikzo.de/count" async src="//gc.zgo.at/count.js"></script>
 
-    <!-- KORREKTER CALLBACK UM DIE ZAHL EINZUSETZEN -->
+    <!-- SAUBERE EINBINDUNG DER ZÄHLERZAHL OHNE KASTEN -->
     <script>
         window.addEventListener('load', function() {
-            let checks = 0;
-            const checkInterval = setInterval(function() {
-                checks++;
-                if (window.goatcounter && typeof window.goatcounter.visit_count === 'function') {
-                    clearInterval(checkInterval);
-                    window.goatcounter.visit_count({
-                        append: '#visitor-count',
-                        type: 'html',
-                        no_branding: true
-                    });
-                } else if (checks > 50) {
-                    clearInterval(checkInterval);
+            const interval = setInterval(function() {
+                if (window.goatcounter) {
+                    clearInterval(interval);
+                    fetch('https://counter.mikzo.de/counter/TOTAL.json')
+                        .then(res => res.json())
+                        .then(data => {
+                            if(data.count) {
+                                document.getElementById('visitor-count').innerText = data.count;
+                            }
+                        })
+                        .catch(err => console.log('Counter-Fehler'));
                 }
-            }, 100);
+            }, 200);
         });
     </script>
 
