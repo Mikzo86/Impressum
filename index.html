@@ -302,6 +302,10 @@
             transition: color 0.2s ease;
         }
 
+        .visitor-counter:hover {
+            color: var(--accent);
+        }
+
         #visitor-count {
             color: var(--accent);
             font-weight: 700;
@@ -440,20 +444,31 @@
     </script>
     <script data-goatcounter="https://counter.mikzo.de/count" async src="//gc.zgo.at/count.js"></script>
 
-    <!-- SAUBERE EINBINDUNG DER ZÄHLERZAHL -->
+    <!-- ROBUUSTER ZÄHLER-ABRUF -->
     <script>
         window.addEventListener('load', function() {
-            fetch('https://counter.mikzo.de/counter/?callback=jsonp')
-                .then(res => res.text())
-                .then(text => {
-                    const match = text.match(/"count":"([\d,]+)"/);
-                    if (match && match[1]) {
-                        document.getElementById('visitor-count').innerText = match[1];
+            fetch('https://counter.mikzo.de/counter/TOTAL.json')
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.count) {
+                        document.getElementById('visitor-count').innerText = data.count;
                     }
                 })
-                .catch(err => {
-                    console.log('Counter-Fehler');
-                    document.getElementById('visitor-count').innerText = '—';
+                .catch(error => {
+                    fetch('https://counter.mikzo.de/counter/')
+                        .then(res => res.text())
+                        .then(html => {
+                            const parser = new DOMParser();
+                            const doc = parser.parseFromString(html, 'text/html');
+                            const countEl = doc.querySelector('#count') || doc.querySelector('main');
+                            if (countEl) {
+                                document.getElementById('visitor-count').innerText = countEl.innerText.trim();
+                            }
+                        })
+                        .catch(err => {
+                            console.log('Zähler konnte nicht geladen werden');
+                            document.getElementById('visitor-count').innerText = '—';
+                        });
                 });
         });
     </script>
