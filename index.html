@@ -433,30 +433,30 @@
     </footer>
 
 
-    <!-- GOATCOUNTER SCRIPT -->
-   <script
-    data-goatcounter="https://mikzo.goatcounter.com/count"
-    async
-    src="//gc.zgo.at/count.js">
-   </script>
+    <!-- GOATCOUNTER ZÄHL-SKRIPT -->
+    <script
+        data-goatcounter="https://mikzo.goatcounter.com/count"
+        async
+        src="//gc.zgo.at/count.js">
+    </script>
 
 
-    <!-- Besucherzahl sauber anzeigen -->
+    <!-- REINE BESUCHERZAHL API ABRUF -->
     <script>
-        const waitForGoatCounter = setInterval(() => {
-            if (window.goatcounter && window.goatcounter.visit_count) {
-                clearInterval(waitForGoatCounter);
-                window.goatcounter.visit_count({
-                    no_branding: true,
-                    callback: (count) => {
-                        const el = document.getElementById('visitor-count');
-                        if (el) {
-                            el.innerText = count;
-                        }
-                    }
-                });
-            }
-        }, 100);
+        fetch('https://mikzo.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json')
+            .then(response => response.json())
+            .then(data => {
+                const countElement = document.getElementById('visitor-count');
+                if (countElement && data.count) {
+                    countElement.innerText = data.count.replace(/\s/g, '');
+                }
+            })
+            .catch(() => {
+                const countElement = document.getElementById('visitor-count');
+                if (countElement) {
+                    countElement.innerText = '—';
+                }
+            });
     </script>
 
 </body>
