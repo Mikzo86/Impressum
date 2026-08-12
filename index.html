@@ -302,10 +302,6 @@
             transition: color 0.2s ease;
         }
 
-        .visitor-counter:hover {
-            color: var(--accent);
-        }
-
         #visitor-count {
             color: var(--accent);
             font-weight: 700;
@@ -419,7 +415,7 @@
 
             <!-- Besucherzähler -->
             <span class="visitor-counter">
-                // <span id="visitor-count">—</span> BESUCHE
+                // <span id="visitor-count">...</span> BESUCHE
             </span>
 
             <a href="/impressum.html">
@@ -444,22 +440,21 @@
     </script>
     <script data-goatcounter="https://counter.mikzo.de/count" async src="//gc.zgo.at/count.js"></script>
 
-    <!-- SAUBERE EINBINDUNG DER ZÄHLERZAHL OHNE KASTEN -->
+    <!-- SAUBERE EINBINDUNG DER ZÄHLERZAHL -->
     <script>
         window.addEventListener('load', function() {
-            const interval = setInterval(function() {
-                if (window.goatcounter) {
-                    clearInterval(interval);
-                    fetch('https://counter.mikzo.de/counter/TOTAL.json')
-                        .then(res => res.json())
-                        .then(data => {
-                            if(data.count) {
-                                document.getElementById('visitor-count').innerText = data.count;
-                            }
-                        })
-                        .catch(err => console.log('Counter-Fehler'));
-                }
-            }, 200);
+            fetch('https://counter.mikzo.de/counter/?callback=jsonp')
+                .then(res => res.text())
+                .then(text => {
+                    const match = text.match(/"count":"([\d,]+)"/);
+                    if (match && match[1]) {
+                        document.getElementById('visitor-count').innerText = match[1];
+                    }
+                })
+                .catch(err => {
+                    console.log('Counter-Fehler');
+                    document.getElementById('visitor-count').innerText = '—';
+                });
         });
     </script>
 
