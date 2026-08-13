@@ -257,18 +257,19 @@
             color: var(--accent);
         }
 
-        /* Twitch Live Badge Design */
+        /* Live Badge Design (standardmäßig ausgeblendet) */
         .live-badge {
-            display: inline-flex;
+            display: none;
             align-items: center;
             gap: 6px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--live-green);
             background: rgba(34, 197, 94, 0.1);
             padding: 2px 8px;
             border-radius: 12px;
             border: 1px solid rgba(34, 197, 94, 0.3);
             margin-left: 10px;
+            text-transform: uppercase;
         }
 
         .live-dot {
@@ -396,7 +397,7 @@
             >
                 <div class="card-content">
                     <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.5-1-2.2c-.9-1-2-1-2.5-1-3.5-.3-8.8-.3-8.8-.3s-5.3 0-8.8.3c-.5 0-1.6 0-2.5 1-.8.7-1 2.2-1 2.2s-.3 2.5-.3 5.1v2.4c0 2.6.3 5.1.3 5.1s.2 1.5 1 2.2c.9 1 2.1 1 2.6 1.1 1.9.2 8.7.2 8.7.2s5.4 0 8.9-.3c.5 0 1.6 0 2.5-1 .8-.7 1-2.2 1-2.2s.3-2.5.3-5.1v-2.4c0-2.6-.3-5.1-.3-5.1zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
-                    YouTube
+                    YouTube <span id="youtube-badge" class="live-badge"><span class="live-dot"></span>LIVE</span>
                 </div>
                 <div class="card-arrow">&rarr;</div>
             </a>
@@ -409,7 +410,7 @@
             >
                 <div class="card-content">
                     <svg viewBox="0 0 24 24"><path d="M11.6 4.7h2.1v5.7h-2.1zm7.1 0h2.1v5.7h-2.1zM5.6 0L1 4.6v15h5.7V24l4.3-4.4h3.4l7.1-7.1V0H5.6zm15.7 10.3l-3.4 3.4h-3.4l-3 3v-3H6.9V1.7h14.4v8.6z"/></svg>
-                    Twitch <span class="live-badge"><span class="live-dot"></span>LIVE</span>
+                    Twitch <span id="twitch-badge" class="live-badge"><span class="live-dot"></span>LIVE</span>
                 </div>
                 <div class="card-arrow">&rarr;</div>
             </a>
@@ -487,6 +488,27 @@
         </div>
 
     </footer>
+
+    <!-- Live Status Abfrage Skript -->
+    <script>
+        // Twitch Live-Status prüfen
+        fetch('https://decapi.me/twitch/uptime/mikzo86')
+            .then(response => response.text())
+            .then(data => {
+                if (data && !data.includes('offline') && !data.includes('error')) {
+                    document.getElementById('twitch-badge').style.display = 'inline-flex';
+                }
+            }).catch(() => {});
+
+        // YouTube Live-Status prüfen
+        fetch('https://decapi.me/youtube/live_check?user=mikzo86')
+            .then(response => response.text())
+            .then(data => {
+                if (data === '1' || data.toLowerCase().includes('yes')) {
+                    document.getElementById('youtube-badge').style.display = 'inline-flex';
+                }
+            }).catch(() => {});
+    </script>
 
 </body>
 </html>
