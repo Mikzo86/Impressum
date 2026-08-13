@@ -292,26 +292,6 @@
         }
 
         /* =========================
-            BESUCHERZÄHLER
-        ========================= */
-
-        .visitor-counter {
-            color: var(--text-muted);
-            white-space: nowrap;
-
-            transition: color 0.2s ease;
-        }
-
-        .visitor-counter:hover {
-            color: var(--accent);
-        }
-
-        #visitor-count {
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        /* =========================
             MOBILE
         ========================= */
 
@@ -417,11 +397,6 @@
 
         <div class="agency-footer-links">
 
-            <!-- Besucherzähler -->
-            <span class="visitor-counter">
-                // <span id="visitor-count">...</span> BESUCHE
-            </span>
-
             <a href="/impressum.html">
                 Impressum
             </a>
@@ -433,33 +408,6 @@
         </div>
 
     </footer>
-
-
-    <!-- OFFIZIELLES GOATCOUNTER SKRIPT -->
-    <script>
-        window.goatcounter = {
-            allow_local: true,
-            endpoint: 'https://counter.mikzo.de/count'
-        };
-    </script>
-    <script data-goatcounter="https://counter.mikzo.de/count" async src="//gc.zgo.at/count.js"></script>
-
-    <!-- ZÄHLER-ABRUF -->
-    <script>
-        window.addEventListener('load', function() {
-            fetch('https://counter.mikzo.de/counter/TOTAL.json?t=' + Date.now())
-                .then(response => response.json())
-                .then(data => {
-                    if (data && data.count) {
-                        document.getElementById('visitor-count').innerText = data.count;
-                    }
-                })
-                .catch(error => {
-                    console.log('Zähler konnte nicht geladen werden');
-                    document.getElementById('visitor-count').innerText = '8';
-                });
-        });
-    </script>
 
 </body>
 </html>
