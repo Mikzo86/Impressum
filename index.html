@@ -68,8 +68,22 @@
             overflow-x: hidden;
         }
 
+        /* HIGH-END ADDON: Cinematic Film Grain Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
         /* =========================
-           MOUSE GLOW
+            MOUSE GLOW
         ========================= */
 
         body::after {
@@ -168,7 +182,7 @@
         }
 
         /* =========================
-           UPLOAD SCHEDULE
+            UPLOAD SCHEDULE
         ========================= */
 
         .upload-schedule {
@@ -331,7 +345,7 @@
         }
 
         /* =========================
-           HOVER LIGHT SWEEP
+            HOVER LIGHT SWEEP
         ========================= */
 
         .agency-card::after {
@@ -391,29 +405,12 @@
             transition: all 0.3s ease;
         }
 
-        .agency-card:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .agency-card:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-
-        .agency-card:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        .agency-card:nth-child(4) {
-            animation-delay: 0.5s;
-        }
-
-        .agency-card:nth-child(5) {
-            animation-delay: 0.6s;
-        }
-
-        .agency-card:nth-child(6) {
-            animation-delay: 0.7s;
-        }
+        .agency-card:nth-child(1) { animation-delay: 0.2s; }
+        .agency-card:nth-child(2) { animation-delay: 0.3s; }
+        .agency-card:nth-child(3) { animation-delay: 0.4s; }
+        .agency-card:nth-child(4) { animation-delay: 0.5s; }
+        .agency-card:nth-child(5) { animation-delay: 0.6s; }
+        .agency-card:nth-child(6) { animation-delay: 0.7s; }
 
         @keyframes slideInLinks {
             to {
@@ -442,7 +439,8 @@
             background: rgba(14, 20, 33, 0.9);
             border-color: var(--border-active);
 
-            transform: translateX(6px);
+            /* HIGH-END ADDON: Slide + 3D Tilt Kombi */
+            transform: translateX(6px) perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
 
             box-shadow:
                 0 20px 40px -15px
@@ -463,7 +461,7 @@
             color: var(--accent);
         }
 
-        /* Live Badge Design (standardmäßig ausgeblendet) */
+        /* Live Badge Design */
         .live-badge {
             display: none;
             align-items: center;
@@ -496,21 +494,13 @@
         }
 
         @keyframes pulseDot {
-            0% {
-                transform: scale(0.9);
-            }
-
-            50% {
-                transform: scale(1.3);
-            }
-
-            100% {
-                transform: scale(0.9);
-            }
+            0% { transform: scale(0.9); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(0.9); }
         }
 
         /* =========================
-           FOOTER
+            FOOTER
         ========================= */
 
         .agency-footer {
@@ -563,7 +553,7 @@
         }
 
         /* =========================
-           MOBILE
+            MOBILE
         ========================= */
 
         @media (max-width: 768px) {
@@ -742,11 +732,11 @@
 
     </footer>
 
-    <!-- Live Status Abfrage Skript -->
+    <!-- Skripte (Mouse Glow, 3D Tilt, Web Audio API Sound & Live Status) -->
     <script>
 
         /* =========================
-           MOUSE GLOW
+            MOUSE GLOW
         ========================= */
 
         if (window.matchMedia('(pointer: fine)').matches) {
@@ -773,12 +763,71 @@
             updateMouseGlow();
         }
 
+        /* =========================
+            3D TILT & UI SOUNDS
+        ========================= */
+
+        const cards = document.querySelectorAll('.agency-card');
+        let audioCtx;
+
+        function playHoverSound() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(1000, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.05);
+
+            gainNode.gain.setValueAtTime(0.015, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.05);
+        }
+
+        cards.forEach(card => {
+            // 3D Tilt Event
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -6;
+                const rotateY = ((x - centerX) / centerX) * 6;
+                
+                card.style.setProperty('--rx', `${rotateX}deg`);
+                card.style.setProperty('--ry', `${rotateY}deg`);
+            });
+
+            // Reset auf Mouseleave
+            card.addEventListener('mouseleave', () => {
+                card.style.setProperty('--rx', `0deg`);
+                card.style.setProperty('--ry', `0deg`);
+            });
+
+            // Sound Event
+            card.addEventListener('mouseenter', playHoverSound);
+        });
+
+        /* =========================
+            LIVE STATUS API
+        ========================= */
 
         // Twitch Live-Status prüfen
         fetch('https://decapi.me/twitch/uptime/mikzo86')
             .then(response => response.text())
             .then(data => {
-
                 if (
                     data &&
                     !data.includes('offline') &&
@@ -786,23 +835,19 @@
                 ) {
                     document.getElementById('twitch-badge').style.display = 'inline-flex';
                 }
-
             })
             .catch(() => {});
-
 
         // YouTube Live-Status prüfen
         fetch('https://decapi.me/youtube/live_check?user=mikzo86')
             .then(response => response.text())
             .then(data => {
-
                 if (
                     data === '1' ||
                     data.toLowerCase().includes('yes')
                 ) {
                     document.getElementById('youtube-badge').style.display = 'inline-flex';
                 }
-
             })
             .catch(() => {});
 
