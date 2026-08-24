@@ -301,7 +301,7 @@
         }
 
         /* =========================
-            STABILER YOUTUBE PLAYER (PC + Handy kompatibel, Keine Shorts)
+            STABILER YOUTUBE PLAYER
         ========================= */
 
         .latest-video-container {
@@ -361,6 +361,7 @@
 
             position: relative;
             overflow: hidden;
+            cursor: pointer;
 
             opacity: 0;
             transform: translateX(30px);
@@ -472,7 +473,6 @@
             background: rgba(14, 20, 33, 0.9);
             border-color: var(--border-active);
 
-            /* HIGH-END ADDON: Slide + 3D Tilt Kombi */
             transform: translateX(6px) perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
 
             box-shadow:
@@ -530,6 +530,140 @@
             0% { transform: scale(0.9); }
             50% { transform: scale(1.3); }
             100% { transform: scale(0.9); }
+        }
+
+        /* =========================
+            EMAIL MODAL (POPUP)
+        ========================= */
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(2, 4, 8, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: rgba(10, 14, 23, 0.95);
+            border: 1px solid var(--border-active);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 480px;
+            padding: 30px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-glow);
+            transform: translateY(20px) scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: rgba(2, 4, 8, 0.6);
+            border: 1px solid var(--border-glass);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: var(--accent);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 5px;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-2px);
         }
 
         /* =========================
@@ -660,7 +794,7 @@
                 </div>
             </div>
 
-            <!-- YouTube-Player (Direkt-Embed, garantiert keine Shorts, läuft auf PC & Handy reibungslos) -->
+            <!-- YouTube-Player -->
             <div class="latest-video-container">
                 <iframe 
                     src="https://www.youtube-nocookie.com/embed/4hbUn3gpimI" 
@@ -744,18 +878,48 @@
                 <div class="card-arrow">&rarr;</div>
             </a>
 
-            <a
-                href="mailto:mikzo@gmx.de"
-                class="agency-card"
-            >
+            <!-- Interaktive E-Mail-Karte (Öffnet das Popup) -->
+            <div class="agency-card" id="open-email-modal">
                 <div class="card-content">
                     <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-4V6l8 5 8-4v2z"/></svg>
                     mikzo@gmx.de
                 </div>
 
                 <div class="card-arrow">&rarr;</div>
-            </a>
+            </div>
 
+        </div>
+    </div>
+
+    <!-- E-Mail Modal Popup -->
+    <div class="modal-overlay" id="emailModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Nachricht senden</h3>
+                <button class="modal-close" id="close-email-modal">&times;</button>
+            </div>
+            <!-- Du kannst action auf einen echten Endpoint wie FormSubmit (https://formsubmit.co/dein-token) setzen -->
+            <form class="email-form" action="https://formsubmit.co/mikzo@gmx.de" method="POST">
+                <input type="hidden" name="_subject" value="Neue Nachricht über MIKZO Linktree">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div class="form-group">
+                    <label for="name">Dein Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Name eingeben...">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Deine E-Mail</label>
+                    <input type="email" id="email" name="email" required placeholder="name@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Nachricht</label>
+                    <textarea id="message" name="message" required placeholder="Deine Nachricht an MIKZO..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Nachricht absenden</button>
+            </form>
         </div>
     </div>
 
@@ -779,9 +943,8 @@
 
     </footer>
 
-    <!-- Skripte (Mouse Glow, 3D Tilt, Web Audio API Sound & Live Status) -->
+    <!-- Skripte -->
     <script>
-
         /* =========================
             MOUSE GLOW
         ========================= */
@@ -841,7 +1004,6 @@
         }
 
         cards.forEach(card => {
-            // 3D Tilt Event
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -857,21 +1019,40 @@
                 card.style.setProperty('--ry', `${rotateY}deg`);
             });
 
-            // Reset auf Mouseleave
             card.addEventListener('mouseleave', () => {
                 card.style.setProperty('--rx', `0deg`);
                 card.style.setProperty('--ry', `0deg`);
             });
 
-            // Sound Event
             card.addEventListener('mouseenter', playHoverSound);
+        });
+
+        /* =========================
+            EMAIL MODAL LOGIC
+        ========================= */
+
+        const emailCard = document.getElementById('open-email-modal');
+        const emailModal = document.getElementById('emailModal');
+        const closeEmailModal = document.getElementById('close-email-modal');
+
+        emailCard.addEventListener('click', () => {
+            emailModal.classList.add('active');
+        });
+
+        closeEmailModal.addEventListener('click', () => {
+            emailModal.classList.remove('active');
+        });
+
+        emailModal.addEventListener('click', (e) => {
+            if (e.target === emailModal) {
+                emailModal.classList.remove('active');
+            }
         });
 
         /* =========================
             LIVE STATUS API
         ========================= */
 
-        // Twitch Live-Status prüfen
         fetch('https://decapi.me/twitch/uptime/mikzo86')
             .then(response => response.text())
             .then(data => {
@@ -885,7 +1066,6 @@
             })
             .catch(() => {});
 
-        // YouTube Live-Status prüfen
         fetch('https://decapi.me/youtube/live_check?user=mikzo86')
             .then(response => response.text())
             .then(data => {
@@ -897,7 +1077,6 @@
                 }
             })
             .catch(() => {});
-
     </script>
 
 </body>
