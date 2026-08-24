@@ -698,7 +698,8 @@
         <div class="agency-links">
 
             <a
-                href="https://www.youtube.com/@Mikzo86?sub_confirmation=1"
+                href="#"
+                data-url="https://www.youtube.com/@Mikzo86?sub_confirmation=1"
                 target="_blank"
                 rel="noopener noreferrer external"
                 class="agency-card"
@@ -712,7 +713,8 @@
             </a>
 
             <a
-                href="https://www.twitch.tv/mikzo86"
+                href="#"
+                data-url="https://www.twitch.tv/mikzo86"
                 target="_blank"
                 rel="noopener noreferrer external"
                 class="agency-card"
@@ -726,7 +728,8 @@
             </a>
 
             <a
-                href="https://www.instagram.com/mikzoyt"
+                href="#"
+                data-url="https://www.instagram.com/mikzoyt"
                 target="_blank"
                 rel="noopener noreferrer external"
                 class="agency-card"
@@ -740,7 +743,8 @@
             </a>
 
             <a
-                href="https://www.tiktok.com/@mikzotk"
+                href="#"
+                data-url="https://www.tiktok.com/@mikzotk"
                 target="_blank"
                 rel="noopener noreferrer external"
                 class="agency-card"
@@ -754,7 +758,8 @@
             </a>
 
             <a
-                href="https://www.snapchat.com/@mikzo86"
+                href="#"
+                data-url="https://www.snapchat.com/@mikzo86"
                 target="_blank"
                 rel="noopener noreferrer external"
                 class="agency-card"
@@ -769,7 +774,8 @@
 
             <!-- BusinessAnfrage-Karte mit Smart-Check für PC & Handy -->
             <a
-                href="mailto:mikzo@gmx.de?subject=Business-Anfrage%20an%20MIKZO"
+                href="#"
+                data-url="mailto:mikzo@gmx.de?subject=Business-Anfrage%20an%20MIKZO"
                 class="agency-card"
                 id="business-btn"
             >
@@ -888,31 +894,38 @@
                 card.style.setProperty('--ry', `0deg`);
             });
 
-            card.addEventListener('mouseenter', playHoverSound);
+            card.addEventListener('mouseenter', playHoverStatus = playHoverSound);
         });
 
         /* =========================
-            PC VS MOBILE MAIL HANDLER
+            CENTRAL LINK & MAIL HANDLER (No URL Preview)
         ========================= */
 
-        const businessBtn = document.getElementById('business-btn');
         const copyToast = document.getElementById('copyToast');
 
-        businessBtn.addEventListener('click', (e) => {
-            // Prüfen ob es sich um ein Smartphone / Tablet handelt
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        cards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault(); // Verhindert das Standardverhalten und die URL-Vorschau
+                const targetUrl = card.getAttribute('data-url');
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-            if (!isMobile) {
-                // Wenn es ein PC-Browser ist -> mailto verhindern und stattdessen E-Mail kopieren
-                e.preventDefault();
-                navigator.clipboard.writeText('mikzo@gmx.de').then(() => {
-                    copyToast.classList.add('show');
-                    setTimeout(() => {
-                        copyToast.classList.remove('show');
-                    }, 3000);
-                });
-            }
-            // Auf Smartphones passiert hier nichts extra, da greift ganz normal der mailto:-Link!
+                // Wenn es der Business-Button ist und wir am PC sind -> E-Mail kopieren
+                if (card.id === 'business-btn' && !isMobile) {
+                    navigator.clipboard.writeText('mikzo@gmx.de').then(() => {
+                        copyToast.classList.add('show');
+                        setTimeout(() => {
+                            copyToast.classList.remove('show');
+                        }, 3000);
+                    });
+                } else {
+                    // Für alle anderen Buttons (Social Media & Handy-Business) normal im neuen Tab/Fenster öffnen
+                    if (card.getAttribute('target') === '_blank') {
+                        window.open(targetUrl, '_blank', 'noopener,noreferrer');
+                    } else {
+                        window.location.href = targetUrl;
+                    }
+                }
+            });
         });
 
         /* =========================
