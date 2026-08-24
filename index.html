@@ -697,7 +697,6 @@
 
         <div class="agency-links">
 
-            <!-- Geändert von <a> zu <div class="agency-card"> -->
             <div
                 data-url="https://www.youtube.com/@Mikzo86?sub_confirmation=1"
                 class="agency-card"
@@ -892,7 +891,6 @@
                 const targetUrl = card.getAttribute('data-url');
                 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-                // Wenn es der Business-Button ist und wir am PC sind -> E-Mail kopieren
                 if (card.id === 'business-btn' && !isMobile) {
                     navigator.clipboard.writeText('mikzo@gmx.de').then(() => {
                         copyToast.classList.add('show');
@@ -901,7 +899,6 @@
                         }, 3000);
                     });
                 } else {
-                    // Für alle anderen Buttons (Social Media & Handy-Business) im neuen Tab öffnen
                     window.open(targetUrl, '_blank', 'noopener,noreferrer');
                 }
             });
