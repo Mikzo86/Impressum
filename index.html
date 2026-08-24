@@ -532,12 +532,12 @@
             100% { transform: scale(0.9); }
         }
 
-        /* Toast-Benachrichtigung für PC */
+        /* Toast-Benachrichtigung für Desktop */
         .copy-toast {
             position: fixed;
-            bottom: 30px;
+            top: 30px;
             left: 50%;
-            transform: translateX(-50%) translateY(100px);
+            transform: translateX(-50%) translateY(-100px);
             background: rgba(10, 14, 23, 0.95);
             border: 1px solid var(--border-active);
             color: var(--text-main);
@@ -764,7 +764,7 @@
             >
                 <div class="card-content">
                     <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-4V6l8 5 8-4v2z"/></svg>
-                    Business  Anfrage
+                    Business Anfrage
                 </div>
 
                 <div class="card-arrow">&rarr;</div>
@@ -881,7 +881,7 @@
         });
 
         /* =========================
-            CENTRAL LINK & MAIL HANDLER (No URL Preview)
+            CENTRAL LINK & MAIL HANDLER
         ========================= */
 
         const copyToast = document.getElementById('copyToast');
@@ -889,7 +889,7 @@
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 const targetUrl = card.getAttribute('data-url');
-                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
                 if (card.id === 'business-btn' && !isMobile) {
                     navigator.clipboard.writeText('mikzo@gmx.de').then(() => {
